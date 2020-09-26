@@ -7,7 +7,7 @@ filebeat.inputs:
   enabled: true
   fields_under_root: true
   paths:
-    - {{optsec_dir}}/cobaltstrike/logs/*/events.log
+    - {{ optsec_dir }}/cobaltstrike/logs/*/events.log
   fields:
     infra:
       log:
@@ -22,7 +22,7 @@ filebeat.inputs:
   enabled: true
   fields_under_root: true
   paths:
-    - {{optsec_dir}}/cobaltstrike/logs/*/weblog.log
+    - {{ optsec_dir }}/cobaltstrike/logs/*/weblog.log
   fields:
     infra:
       log:
@@ -37,7 +37,7 @@ filebeat.inputs:
   enabled: true
   fields_under_root: true
   paths:
-    - {{optsec_dir}}/cobaltstrike/logs/*/downloads.log
+    - {{ optsec_dir }}/cobaltstrike/logs/*/downloads.log
   fields:
     infra:
       log:
@@ -52,7 +52,7 @@ filebeat.inputs:
   enabled: true
   fields_under_root: true
   paths:
-    - {{optsec_dir}}/cobaltstrike/data/export_credentials.tsv
+    - {{ optsec_dir }}/cobaltstrike/data/export_credentials.tsv
   fields:
     infra:
       log:
@@ -67,7 +67,7 @@ filebeat.inputs:
   enabled: true
   fields_under_root: true
   paths:
-    - {{optsec_dir}}/cobaltstrike/data/export_listeners.log
+    - {{ optsec_dir }}/cobaltstrike/data/export_listeners.log
   fields:
     infra:
       log:
@@ -82,7 +82,7 @@ filebeat.inputs:
   enabled: true
   fields_under_root: true
   paths:
-    - {{optsec_dir}}/cobaltstrike/logs/*/*/beacon_*.log
+    - {{ optsec_dir }}/cobaltstrike/logs/*/*/beacon_*.log
 {% raw %}
   # Since Cobalt Strike version 3.14 the time format in the logs is changed. Here we use regex 'or' function (expr1)|(expr2) to match new or old format
   multiline.pattern: '(^\d\d\/\d\d\s\d\d\:\d\d\:\d\d\sUTC\s\[)|(^\d\d\/\d\d\s\d\d\:\d\d\:\d\d\s\[)' # match "06/19 12:32:56 UTC [" or "06/19 12:32:56 ["
@@ -103,7 +103,7 @@ filebeat.inputs:
   enabled: true
   fields_under_root: true
   paths:
-    - {{optsec_dir}}/cobaltstrike/logs/*/*/keystrokes/keystrokes_*.txt
+    - {{ optsec_dir }}/cobaltstrike/logs/*/*/keystrokes/keystrokes_*.txt
 {% raw %}
   # Since Cobalt Strike version 3.14 the time format in the logs is changed. Here we use regex 'or' function (expr1)|(expr2) to match new or old format
   multiline.pattern: '(^\d\d\/\d\d\s\d\d\:\d\d\:\d\d\sUTC\s\[)|(^\d\d\/\d\d\s\d\d\:\d\d\:\d\d\s\[)' # match "06/19 12:32:56 UTC [" or "06/19 12:32:56 ["

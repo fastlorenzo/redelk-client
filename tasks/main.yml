@@ -32,16 +32,16 @@
 - name: Adding redelk user
   become: yes
   user:
-    name: "{{redelk_user}}"
-    home: "{{optsec_dir}}/{{redelk_user}}"
+    name: "{{ redelk_user }}"
+    home: "{{ optsec_dir }}/{{ redelk_user }}"
   tags:
     - user
 
 - name: Adding SSH authorized_key for redelk user
   become: yes
   authorized_key:
-    user: "{{redelk_user}}"
-    key: "{{ lookup('file', '{{ssh_keys_path}}/{{redelk_user}}_id_rsa.pub') }}"
+    user: "{{ redelk_user }}"
+    key: "{{ lookup('file', '{{ ssh_keys_path }}/{{ redelk_user }}_id_rsa.pub') }}"
   tags:
     - ssh
 
@@ -49,7 +49,7 @@
   become: yes
   apt:
     name:
-      - filebeat={{es_version}}
+      - filebeat={{ es_version }}
       - python3-pip
     state: present
     update_cache: yes
@@ -61,9 +61,9 @@
   become: yes
   apt:
     name:
-      - auditbeat={{es_version}}
-      - metricbeat={{es_version}}
-      - packetbeat={{es_version}}
+      - auditbeat={{ es_version }}
+      - metricbeat={{ es_version }}
+      - packetbeat={{ es_version }}
     state: present
     update_cache: yes
   register: pkg

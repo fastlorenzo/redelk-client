@@ -195,6 +195,6 @@ fields:
     attack_scenario: {{ attack_scenario }}
 
 output.logstash:
-  hosts: ["localhost:5044"]
+  hosts: ["{{ redelk_server_host }}:5044"]
   ssl.certificate_authorities:
     - /etc/filebeat/redelkCA.crt

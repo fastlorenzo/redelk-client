@@ -10,22 +10,18 @@
   tags:
     - packages
 
-- name: Adding GPG key of Elastic
+- name: Install Elastic repository
   become: yes
-  apt_key:
-    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
-    state: present
-  register: redelk
-  tags:
-    - packages
-
-- name: Adding Elastic APT repository
-  become: yes
-  apt_repository:
-    repo: deb https://artifacts.elastic.co/packages/7.x/apt stable main
-    state: present
-    filename: elastic-7.x
-  when: redelk.changed
+  block:
+  - name: Adding GPG key of Elastic
+    apt_key:
+      url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+      state: present
+  - name: Adding Elastic APT repository
+    apt_repository:
+      repo: deb https://artifacts.elastic.co/packages/7.x/apt stable main
+      state: present
+      filename: elastic-7.x
   tags:
     - packages
 

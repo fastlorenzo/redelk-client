@@ -4,7 +4,7 @@
   template:
     src: metricbeat.yml.j2
     dest: /etc/metricbeat/metricbeat.yml
-  register: metricbeatcfg
+  notify: restart metricbeat
   tags:
     - config
 
@@ -13,7 +13,7 @@
   copy:
     src: certificates/redelk/redelkCA.crt
     dest: /etc/metricbeat/redelkCA.crt
-  register: redelkca
+  notify: restart metricbeat
   tags:
     - pki
 
@@ -28,13 +28,3 @@
     mode: u=rwX,g=rX,o=-rwx
   tags:
     - config
-
-- name: Restarting metricbeat and enabling on boot
-  become: yes
-  service:
-    name: metricbeat
-    state: restarted
-    enabled: yes
-  when: metricbeatcfg.changed or redelkca.changed
-  tags:
-    - services

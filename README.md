@@ -21,6 +21,7 @@ The following variables can be modified:
 | `deploy_all_beats` | Set to true to deploy metricbeat, packetbeat and auditbeat as well | `false` |
 | `ssh_keys_path` | Local path to store ssh keys | `ssh_keys` |
 | `attack_scenario` | Name of the red team attack scenario. Currently only one name is supported | `red team` |
+| `redelk_server_host` | Hostname or IP of the RedELK server (used for filebeat destination) | `localhost` |
 
 Dependencies
 ------------

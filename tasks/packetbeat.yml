@@ -4,7 +4,7 @@
   template:
     src: packetbeat.yml.j2
     dest: /etc/packetbeat/packetbeat.yml
-  register: packetbeatcfg
+  notify: restart packetbeat
   tags:
     - config
 
@@ -13,7 +13,7 @@
   copy:
     src: certificates/redelk/redelkCA.crt
     dest: /etc/packetbeat/redelkCA.crt
-  register: redelkca
+  notify: restart packetbeat
   tags:
     - pki
 
@@ -28,13 +28,3 @@
     mode: u=rwX,g=rX,o=-rwx
   tags:
     - config
-
-- name: Restarting packetbeat and enabling on boot
-  become: yes
-  service:
-    name: packetbeat
-    state: restarted
-    enabled: yes
-  when: packetbeatcfg.changed or redelkca.changed
-  tags:
-    - services

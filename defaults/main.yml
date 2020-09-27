@@ -1,6 +1,6 @@
 ---
 # es_version | Elastic version
-es_version: "7.9.2"
+es_version: "7.8.1"
 # optsec_dir | Base directory for components install (where customer data will be stored) - allows to store on an encrypted partition/disk
 optsec_dir: "/opt"
 # redelk_user | RedELK SSH username (used to sync data between RedELK monitoring server and the clients)
@@ -11,3 +11,5 @@ deploy_all_beats: false
 ssh_keys_path: "ssh_keys"
 # attack_scenario | Name of the red team attack scenario. Currently only one name is supported
 attack_scenario: "red team"
+# redelk_server_host | Hostname or IP of the RedELK server (used for filebeat destination)
+redelk_server_host: "localhost"

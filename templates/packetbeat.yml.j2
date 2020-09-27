@@ -46,8 +46,8 @@ fields:
 processors:
   - add_cloud_metadata: ~
   - add_host_metadata: ~
-  
+
 output.logstash:
-  hosts: ["localhost:5044"]
+  hosts: ["{{ redelk_server_host }}:5044"]
   ssl.certificate_authorities:
     - /etc/packetbeat/redelkCA.crt

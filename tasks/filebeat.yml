@@ -5,7 +5,7 @@
   template:
     src: filebeat.yml.j2
     dest: /etc/filebeat/filebeat.yml
-  register: filebeatcfg
+  notify: restart filebeat
   tags:
     - config
 
@@ -14,7 +14,7 @@
   copy:
     src: certificates/redelk/redelkCA.crt
     dest: /etc/filebeat/redelkCA.crt
-  register: redelkca
+  notify: restart filebeat
   tags:
     - pki
 
@@ -29,13 +29,3 @@
     mode: u=rwX,g=rX,o=-rwx
   tags:
     - config
-
-- name: Restarting filebeat and enabling on boot
-  become: yes
-  service:
-    name: filebeat
-    state: restarted
-    enabled: yes
-  when: filebeatcfg.changed or redelkca.changed
-  tags:
-    - services

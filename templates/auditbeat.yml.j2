@@ -105,6 +105,6 @@ processors:
   - add_host_metadata: ~
 
 output.logstash:
-  hosts: ["localhost:5044"]
+  hosts: ["{{ redelk_server_host }}:5044"]
   ssl.certificate_authorities:
     - /etc/auditbeat/redelkCA.crt

@@ -39,7 +39,10 @@
   cron:
     name: "cron.d script for periodic actions related to RedELK"
     cron_file: redelk_logs
-    job: "/usr/bin/rsync -ax --delete {{ optsec_dir }}/cobaltstrike/logs {{ optsec_dir }}/{{ redelk_user }}/; /bin/chown -R {{ redelk_user }}:{{ redelk_user }} {{ optsec_dir }}/{{ redelk_user }}/*"
+    job: >-
+      /usr/bin/rsync -ax --delete {{ optsec_dir }}/cobaltstrike/logs
+      {{ optsec_dir }}/{{ redelk_user }}/; /bin/chown -R {{ redelk_user }}:{{ redelk_user }}
+      {{ optsec_dir }}/{{ redelk_user }}/*
     user: root
   tags:
     - cron
@@ -49,7 +52,10 @@
   cron:
     name: "cron.d script for periodic actions related to RedELK"
     cron_file: redelk_profiles
-    job: "/usr/bin/rsync -ax --delete {{ optsec_dir }}/cobaltstrike/profiles {{ optsec_dir }}/{{ redelk_user }}/; /bin/chown -R {{ redelk_user }}:{{ redelk_user }} {{ optsec_dir }}/{{ redelk_user }}/*"
+    job: >-
+      /usr/bin/rsync -ax --delete {{ optsec_dir }}/cobaltstrike/profiles
+      {{ optsec_dir }}/{{ redelk_user }}/; /bin/chown -R {{ redelk_user }}:{{ redelk_user }}
+      {{ optsec_dir }}/{{ redelk_user }}/*
     user: root
   tags:
     - cron

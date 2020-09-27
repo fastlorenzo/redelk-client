@@ -4,7 +4,7 @@
   template:
     src: auditbeat.yml.j2
     dest: /etc/auditbeat/auditbeat.yml
-  register: auditbeatcfg
+  notify: restart auditbeat
   tags:
     - config
 
@@ -13,7 +13,7 @@
   copy:
     src: certificates/redelk/redelkCA.crt
     dest: /etc/auditbeat/redelkCA.crt
-  register: redelkca
+  notify: restart auditbeat
   tags:
     - pki
 
@@ -22,7 +22,7 @@
   template:
     src: auditd.rules.j2
     dest: /etc/auditbeat/audit.rules.d/auditd.rules.conf
-  register: auditdbeatcfg
+  notify: restart auditbeat
   tags:
     - config
 
@@ -37,13 +37,3 @@
     mode: u=rwX,g=rX,o=-rwx
   tags:
     - config
-
-- name: Restarting auditbeat and enabling on boot
-  become: yes
-  service:
-    name: auditbeat
-    state: restarted
-    enabled: yes
-  when: auditbeatcfg.changed or redelkca.changed or auditdbeatcfg.changed
-  tags:
-    - services

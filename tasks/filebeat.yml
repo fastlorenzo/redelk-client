@@ -12,7 +12,7 @@
 - name: Copy RedELK CA file to the hosts
   become: yes
   copy:
-    src: certificates/redelk/redelkCA.crt
+    src: "{{ redelk_cert_path }}/ca/ca.crt"
     dest: /etc/filebeat/redelkCA.crt
   notify: restart filebeat
   tags:

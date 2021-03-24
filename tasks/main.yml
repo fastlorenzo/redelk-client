@@ -30,8 +30,10 @@
   user:
     name: "{{ redelk_user }}"
     home: "{{ optsec_dir }}/{{ redelk_user }}"
+  ignore_errors: yes
   tags:
     - user
+    - ssh
 
 - name: Adding SSH authorized_key for redelk user
   become: yes

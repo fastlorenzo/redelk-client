@@ -55,20 +55,6 @@
   tags:
     - packages
 
-- name: Install additional beats (apt)
-  become: yes
-  apt:
-    name:
-      - auditbeat={{ es_version }}
-      - metricbeat={{ es_version }}
-      - packetbeat={{ es_version }}
-    state: present
-    update_cache: yes
-  register: pkg
-  tags:
-    - packages
-  when: deploy_all_beats | bool
-
 - name: Instal required python3 modules
   become: yes
   pip:
@@ -86,19 +72,19 @@
   tags:
     - auditbeat
     - beats
-  when: deploy_all_beats | bool
+  when: '"auditbeat" in es_deploy_beats'
 
 - import_tasks: metricbeat.yml
   tags:
     - metricbeat
     - beats
-  when: deploy_all_beats | bool
+  when: '"metricbeat" in es_deploy_beats'
 
 - import_tasks: packetbeat.yml
   tags:
     - packetbeat
     - beats
-  when: deploy_all_beats | bool
+  when: '"packetbeat" in es_deploy_beats'
 
 - import_tasks: c2.yml
   tags:

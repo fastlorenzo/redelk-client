@@ -15,7 +15,7 @@ The following variables can be modified:
 | `es_version`         | Elastic version                                                                                                             | `7.10.0`      |
 | `optsec_dir`         | Base directory for components install (where customer data will be stored) - allows to store on an encrypted partition/disk | `/opt`        |
 | `redelk_user`        | RedELK SSH username (used to sync data between RedELK monitoring server and the clients)                                    | `redelk`      |
-| `deploy_all_beats`   | Set to true to deploy metricbeat, packetbeat and auditbeat as well                                                          | `false`       |
+| `es_deploy_beats`    | Set which beats to deploy (array of `apm-server`, `auditbeat`, `heartbeat`, `metricbeat`, `nagioscheckbeat`,`packetbeat`)   | `[filebeat]`  |
 | `ssh_keys_path`      | Local path to store ssh keys                                                                                                | `ssh_keys`    |
 | `attack_scenario`    | Name of the red team attack scenario. Currently only one name is supported                                                  | `redteam`     |
 | `redelk_server_host` | Hostname or IP of the RedELK server (used for filebeat destination)                                                         | `localhost`   |

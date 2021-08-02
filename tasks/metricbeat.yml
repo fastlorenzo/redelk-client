@@ -1,4 +1,14 @@
 # metricbeat
+- name: Install metricbeat (apt)
+  become: yes
+  apt:
+    name:
+      - metricbeat={{ es_version }}
+    state: present
+    update_cache: yes
+  tags:
+    - packages
+
 - name: Copy metricbeat.yml config file to the hosts
   become: yes
   template:

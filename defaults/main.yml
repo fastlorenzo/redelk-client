@@ -5,8 +5,15 @@ es_version: "7.10.0"
 optsec_dir: "/opt"
 # redelk_user | RedELK SSH username (used to sync data between RedELK monitoring server and the clients)
 redelk_user: "redelk"
-# deploy_all_beats | Set to true to deploy metricbeat, packetbeat and auditbeat as well
-deploy_all_beats: false
+# es_deploy_beats | Set which beats to deploy
+es_deploy_beats:
+  - filebeat
+  # - apm-server
+  # - auditbeat
+  # - heartbeat
+  # - metricbeat
+  # - nagioscheckbeat
+  # - packetbeat
 # ssh_keys_path | Local path to store ssh keys
 ssh_keys_path: "ssh_keys"
 # attack_scenario | Name of the red team attack scenario. Currently only one name is supported

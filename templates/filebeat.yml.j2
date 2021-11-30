@@ -209,6 +209,16 @@ filebeat.modules:
 {% endraw %}
 {% endif %}
 
+{% if hostvars[inventory_hostname].type == 'phishing' %}
+{% raw %}
+- module: apache
+  access:
+    enabled: true
+  error:
+    enabled: true
+{% endraw %}
+{% endif %}
+
 setup.ilm.enabled: false
 
 name: "{{ ansible_hostname }}"

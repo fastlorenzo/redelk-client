@@ -41,6 +41,19 @@ There is no specific dependency for this module.
     - redelk-client
 ```
 
+## Example inventory
+
+```
+[monitoring]
+redelk-server  ansible_user=rtoperator  ansible_host=192.168.20.150  ansible_become_password=redelk  type=monitoring
+
+[teamservers]
+c2-01          ansible_user=rtoperator  ansible_host=192.168.20.151  ansible_become_password=redelk  type=c2
+
+[redirectors]
+redir-01       ansible_user=rtoperator  ansible_host=192.168.20.152  ansible_become_password=redelk  type=redirector
+```
+
 ## Source Code
 
 * <https://github.com/fastlorenzo/redelk-client>

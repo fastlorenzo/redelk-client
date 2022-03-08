@@ -197,10 +197,6 @@ filebeat.modules:
   log:
     enabled: true
 
-- module: iptables
-  log:
-    enabled: true
-
 {% if hostvars[inventory_hostname].type == 'redirector' %}
 {% raw %}
 - module: haproxy

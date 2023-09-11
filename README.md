@@ -1,5 +1,7 @@
 # redelk-client
 
+**OBSOLETE: please use https://github.com/fastlorenzo/redelk-ansible instead**
+
 Ansible role to deploy [RedELK](https://github.com/outflanknl/RedELK/) client components.
 
 ## Variables
